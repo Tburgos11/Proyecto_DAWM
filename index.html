@@ -1,0 +1,803 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanConsult - Consultoría Financiera Profesional</title>
+    <meta name="description" content="Consultoría financiera especializada para hacer crecer tu negocio. Planificación, inversiones y estrategias personalizadas.">
+    
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        .hero .highlight {
+            color: #3b82f6;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+        }
+
+        .btn-secondary:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .section-title .highlight {
+            color: #3b82f6;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 2px solid #f1f5f9;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #3b82f6;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #eff6ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 24px;
+            color: #3b82f6;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .service-card p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            color: #64748b;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: "•";
+            color: #3b82f6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: #3b82f6;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: #eff6ff;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #64748b;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .testimonial-company {
+            font-size: 0.8rem;
+            color: #3b82f6;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #3b82f6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats {
+                gap: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #dcfce7;
+            color: #166534;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #bbf7d0;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">FinanConsult</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>Impulsa tu <span class="highlight">futuro financiero</span> con <span class="highlight">estrategias expertas</span></h1>
+            <p>Transformamos tu visión empresarial en resultados tangibles. Nuestra consultoría especializada te ayuda a optimizar recursos, maximizar rentabilidad y tomar decisiones estratégicas inteligentes.</p>
+            
+            <div class="cta-buttons">
+                <a href="#contacto" class="btn btn-primary">Consulta Gratuita</a>
+                <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Empresas asesoradas</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Años de experiencia</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Clientes satisfechos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Servicios que <span class="highlight">Transforman</span> tu Negocio</h2>
+                <p>Ofrecemos soluciones financieras integrales diseñadas para impulsar el crecimiento sostenible de tu empresa y optimizar tu rentabilidad.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Planificación Financiera</h3>
+                    <p>Análisis integral de tu situación financiera actual y diseño de estrategias personalizadas para alcanzar tus objetivos empresariales.</p>
+                    <ul class="service-features">
+                        <li>Análisis de flujo de caja</li>
+                        <li>Presupuestos estratégicos</li>
+                        <li>Proyecciones financieras</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Optimización de Inversiones</h3>
+                    <p>Maximiza el rendimiento de tu capital con estrategias de inversión adaptadas a tu perfil de riesgo y objetivos de crecimiento.</p>
+                    <ul class="service-features">
+                        <li>Portafolios diversificados</li>
+                        <li>Análisis de riesgo</li>
+                        <li>Monitoreo continuo</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Gestión de Riesgos</h3>
+                    <p>Identifica, evalúa y mitiga los riesgos financieros que pueden afectar la estabilidad y crecimiento de tu empresa.</p>
+                    <ul class="service-features">
+                        <li>Evaluación de riesgos</li>
+                        <li>Planes de contingencia</li>
+                        <li>Seguros empresariales</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Estrategia Corporativa</h3>
+                    <p>Desarrolla planes estratégicos sólidos que alineen tus recursos financieros con los objetivos de largo plazo de tu empresa.</p>
+                    <ul class="service-features">
+                        <li>Planes estratégicos</li>
+                        <li>Análisis competitivo</li>
+                        <li>Roadmaps financieros</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Análisis de Rendimiento</h3>
+                    <p>Monitorea y evalúa el desempeño financiero de tu empresa con métricas clave y reportes detallados.</p>
+                    <ul class="service-features">
+                        <li>KPIs financieros</li>
+                        <li>Reportes ejecutivos</li>
+                        <li>Benchmarking</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👥</div>
+                    <h3>Consultoría Especializada</h3>
+                    <p>Accede a expertise especializado para resolver desafíos financieros complejos y aprovechar oportunidades de crecimiento.</p>
+                    <ul class="service-features">
+                        <li>Sesiones personalizadas</li>
+                        <li>Expertise sectorial</li>
+                        <li>Soporte continuo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo que Dicen Nuestros <span class="highlight">Clientes</span></h2>
+                <p>La confianza de nuestros clientes es nuestro mayor activo. Descubre cómo hemos transformado sus negocios con estrategias financieras efectivas.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">"Gracias a su asesoría, logramos optimizar nuestro flujo de caja y crecer un 40% en el último año. Su expertise es invaluable."</div>
+                    <div class="testimonial-author">María González</div>
+                    <div class="testimonial-role">CEO, TechStart Solutions</div>
+                    <div class="testimonial-company">Startup Tecnológica</div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-text">"La estrategia de inversión que desarrollaron nos ayudó a diversificar nuestro portafolio y reducir riesgos significativamente."</div>
+                    <div class="testimonial-author">Carlos Mendoza</div>
+                    <div class="testimonial-role">Director Financiero, Grupo Industrial</div>
+                    <div class="testimonial-company">Manufactura</div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-text">"Su planificación financiera nos permitió escalar el negocio de manera sostenible. Recomiendo sus servicios completamente."</div>
+                    <div class="testimonial-author">Ana Rodríguez</div>
+                    <div class="testimonial-role">Fundadora, EcoCommerce</div>
+                    <div class="testimonial-company">E-commerce</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Listo para <span class="highlight">Transformar</span> tu Empresa?</h2>
+                <p>Agenda tu consulta gratuita y descubre cómo podemos impulsar el crecimiento de tu negocio.</p>
+            </div>
+
+            <div class="form-container">
+                <div id="successMessage" class="success-message">
+                    ¡Gracias por contactarnos! Nos pondremos en contacto contigo en las próximas 24 horas.
+                </div>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="empresa">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servicio">Servicio de Interés</label>
+                        <select id="servicio" name="servicio">
+                            <option value="">Selecciona un servicio</option>
+                            <option value="planificacion">Planificación Financiera</option>
+                            <option value="inversiones">Optimización de Inversiones</option>
+                            <option value="riesgos">Gestión de Riesgos</option>
+                            <option value="estrategia">Estrategia Corporativa</option>
+                            <option value="analisis">Análisis de Rendimiento</option>
+                            <option value="consultoria">Consultoría Especializada</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje *</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu empresa y tus necesidades financieras..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">Solicitar Consulta Gratuita</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FinanConsult</h4>
+                    <p>Transformamos tu visión empresarial en resultados tangibles con estrategias financieras expertas.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Planificación Financiera</a></li>
+                        <li><a href="#servicios">Optimización de Inversiones</a></li>
+                        <li><a href="#servicios">Gestión de Riesgos</a></li>
+                        <li><a href="#servicios">Estrategia Corporativa</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Nuestro Equipo</a></li>
+                        <li><a href="#">Casos de Éxito</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>📧 contacto@finaconsult.com</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>📍 Centro Financiero, Piso 25<br>Ciudad de México, CDMX</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 FinanConsult. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission (in real implementation, you would send this to your server)
+            console.log('Form submitted with data:', data);
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+            
+            // In a real implementation, you would send the data to your server like this:
+            /*
+            fetch('/submit-contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    successMessage.classList.add('show');
+                    this.reset();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            */
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(30, 64, 175, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate elements on scroll (simple intersection observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and testimonials
+        document.querySelectorAll('.service-card, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
