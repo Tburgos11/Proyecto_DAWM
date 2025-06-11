@@ -22,8 +22,13 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="container">
+    <section id="inicio" class="hero section-fade" style="position: relative; overflow: hidden;">
+        <img 
+            src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1920&q=80"
+            alt="Impresión y publicidad"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:brightness(0.5) blur(1px);"
+        >
+        <div class="container" style="position:relative;z-index:1;">
             <h1>Transforma tus <span class="highlight">ideas en realidad</span> con <span class="highlight">impresión de calidad</span></h1>
             <p>Somos especialistas en impresión digital, diseño gráfico y publicidad. Desde gigantografías hasta logotipos, convertimos tu visión en productos impresos de alta calidad que destacan tu marca.</p>
             
@@ -50,118 +55,84 @@
     </section>
 
     <!-- Services Section -->
-    <section id="servicios" class="services">
+    <section id="servicios" class="services section-fade">
         <div class="container">
+            <img 
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80"
+                alt="Servicios de impresión y diseño"
+                style="width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-bottom:2rem;"
+            >
             <div class="section-title">
                 <h2>Servicios que <span class="highlight">Impulsan</span> tu Marca</h2>
                 <p>Ofrecemos una amplia gama de servicios de impresión y diseño para satisfacer todas las necesidades de tu empresa, desde pequeños flyers hasta grandes gigantografías.</p>
             </div>
 
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3>Diseño Gráfico</h3>
-                    <p>Creamos diseños únicos y profesionales que reflejan la personalidad de tu marca y conectan con tu audiencia objetivo.</p>
-                    <ul class="service-features">
-                        <li>Logotipos e identidad corporativa</li>
-                        <li>Diseño de flyers y catálogos</li>
-                        <li>Material publicitario</li>
-                    </ul>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn left" id="carouselPrev">&lt;</button>
+                <div class="services-carousel" id="servicesCarousel">
+                    <div class="service-card">
+                        <div class="service-icon">🖨️</div>
+                        <h3>Impresión Digital</h3>
+                        <p>Impresión de alta calidad para flyers, tarjetas, catálogos y más.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>Diseño Gráfico</h3>
+                        <p>Diseño creativo de logotipos, identidad visual y material publicitario.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🪧</div>
+                        <h3>Banners y Lonas</h3>
+                        <p>Producción de banners, lonas y gigantografías resistentes y llamativas.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚗</div>
+                        <h3>Rotulación Vehicular</h3>
+                        <p>Personaliza tu vehículo con vinilos de alta durabilidad y diseño profesional.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏢</div>
+                        <h3>Señalética Empresarial</h3>
+                        <p>Diseño e impresión de señalética para oficinas, locales y eventos.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📦</div>
+                        <h3>Empaques Personalizados</h3>
+                        <p>Cajas, bolsas y etiquetas con tu marca para destacar tus productos.</p>
+                    </div>
+                    <!-- Puedes agregar más servicios aquí -->
                 </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🖨️</div>
-                    <h3>Impresión Digital</h3>
-                    <p>Tecnología de impresión de última generación para garantizar colores vibrantes y acabados perfectos en todos tus proyectos.</p>
-                    <ul class="service-features">
-                        <li>Impresión en alta resolución</li>
-                        <li>Variedad de formatos y tamaños</li>
-                        <li>Entrega rápida y puntual</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">📐</div>
-                    <h3>Gigantografías</h3>
-                    <p>Impresiones de gran formato para exteriores e interiores que captan la atención y transmiten tu mensaje con impacto visual.</p>
-                    <ul class="service-features">
-                        <li>Materiales resistentes al clima</li>
-                        <li>Hasta 5 metros de ancho</li>
-                        <li>Instalación profesional</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🏷️</div>
-                    <h3>Vinil y Adhesivos</h3>
-                    <p>Impresión en vinil de alta calidad para decoración, señalización y publicidad en vehículos, vidrieras y espacios comerciales.</p>
-                    <ul class="service-features">
-                        <li>Vinil adhesivo y removible</li>
-                        <li>Corte de precisión</li>
-                        <li>Aplicación profesional</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">👥</div>
-                    <h3>Banners y Displays</h3>
-                    <p>Soluciones portátiles y versátiles para eventos, ferias comerciales y puntos de venta que destacan tu presencia de marca.</p>
-                    <ul class="service-features">
-                        <li>Roll-ups y X-banners</li>
-                        <li>Displays modulares</li>
-                        <li>Estructuras ligeras y resistentes</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📄</div>
-                    <h3>Material Promocional</h3>
-                    <p>Impresión de tarjetas, folletos, volantes y material promocional que fortalece tu estrategia de marketing y ventas.</p>
-                    <ul class="service-features">
-                        <li>Tarjetas de presentación</li>
-                        <li>Folletos y catálogos</li>
-                        <li>Volantes promocionales</li>
-                    </ul>
-                </div>
+                <button class="carousel-btn right" id="carouselNext">&gt;</button>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonios" class="testimonials">
+    <section id="testimonios" class="testimonials section-fade">
         <div class="container">
+            <img 
+                src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=900&q=80"
+                alt="Clientes satisfechos"
+                style="width:100%;max-height:220px;object-fit:cover;border-radius:12px;margin-bottom:2rem;"
+            >
             <div class="section-title">
                 <h2>Lo que Dicen Nuestros <span class="highlight">Clientes</span></h2>
                 <p>La calidad de nuestros trabajos y el servicio personalizado nos han convertido en la opción preferida de empresas y emprendedores.</p>
             </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <div class="testimonial-text">"Excelente calidad en la impresión de nuestras gigantografías. Los colores quedaron perfectos y el material es muy resistente."</div>
-                    <div class="testimonial-author">Laura Martínez</div>
-                    <div class="testimonial-role">Gerente de Marketing, Tienda Fashion</div>
-                    <div class="testimonial-company">Retail</div>
-                </div>
-
-                <div class="testimonial">
-                    <div class="testimonial-text">"El equipo diseñó nuestro logotipo y toda la identidad corporativa. Quedamos encantados con el resultado profesional."</div>
-                    <div class="testimonial-author">Roberto Silva</div>
-                    <div class="testimonial-role">Fundador, Silva Construcciones</div>
-                    <div class="testimonial-company">Construcción</div>
-                </div>
-
-                <div class="testimonial">
-                    <div class="testimonial-text">"Siempre cumplen con los tiempos de entrega y la calidad es excepcional. Muy recomendados para material promocional."</div>
-                    <div class="testimonial-author">Carmen López</div>
-                    <div class="testimonial-role">Directora, Eventos Premier</div>
-                    <div class="testimonial-company">Eventos</div>
-                </div>
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <!-- Los testimonios se cargarán aquí dinámicamente -->
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contacto" class="contact">
+    <section id="contacto" class="contact section-fade">
         <div class="container">
+            <img 
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
+                alt="Contáctanos"
+                style="width:100%;max-height:180px;object-fit:cover;border-radius:12px;margin-bottom:2rem;"
+            >
             <div class="section-title">
                 <h2>¿Listo para <span class="highlight">Crear</span> tu Proyecto?</h2>
                 <p>Solicita tu cotización gratuita y descubre cómo podemos hacer realidad tus ideas de impresión y diseño.</p>
@@ -250,6 +221,20 @@
                     <p>📧 jordyburgos233@gmail.com</p>
                     <p>📞 +593 98 130 3252</p>
                     <p>📍 Urb.Girasol mz 104 villa 3<br>Guayaquil, Ecuador</p>
+                </div>
+                <div class="footer-section footer-map-section">
+                    <h4>Ubicación</h4>
+                    <div class="footer-map" style="margin-top: 10px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d249.18045684001916!2d-79.94416164840885!3d-2.196323849779893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sec!4v1749655172828!5m2!1ses!2sec" 
+                            width="100%" 
+                            height="180" 
+                            style="border:0; border-radius:8px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
                 </div>
             </div>
 

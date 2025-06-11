@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -39,6 +38,8 @@ body {
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
+    text-align: left;
+    margin-right: auto;
 }
 
 .nav-links {
@@ -183,12 +184,22 @@ body {
 }
 
 .service-card {
-    background: white;
-    padding: 2rem;
+    min-width: 260px;
+    max-width: 280px;
+    flex: 0 0 280px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: #f1f5f9;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    border: 2px solid #f1f5f9;
-    transition: all 0.3s;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
 }
 
 .service-card:hover {
@@ -198,27 +209,20 @@ body {
 }
 
 .service-icon {
-    width: 60px;
-    height: 60px;
-    background: #fef7ff;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    font-size: 24px;
-    color: #e11d48;
+    font-size: 2.5rem;
+    margin-bottom: 0.7rem;
 }
 
 .service-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #1e293b;
+    font-size: 1.15rem;
+    margin: 1rem 0 0.5rem 0;
+    font-weight: bold;
 }
 
 .service-card p {
-    color: #64748b;
-    margin-bottom: 1.5rem;
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
+    color: #334155;
 }
 
 .service-features {
@@ -358,7 +362,7 @@ body {
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(5, 1fr); /* Cambia aquí a 5 columnas */
     gap: 2rem;
     margin-bottom: 2rem;
 }
@@ -408,6 +412,114 @@ body {
     display: block;
 }
 
+/* Footer Map Section */
+.footer-map-section {
+    min-width: 250px;
+    max-width: 350px;
+}
+
+/* Section Fade */
+.section-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Services Carousel */
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    margin: 0 auto 2rem auto;
+    max-width: 1100px;
+}
+
+.services-carousel {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 350px;
+}
+
+.carousel-btn {
+    background: #e11d48;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.85;
+    z-index: 2;
+    transition: background 0.2s;
+    margin: 0 10px;
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: #f97316;
+}
+
+.service-card {
+    min-width: 260px;
+    max-width: 280px;
+    flex: 0 0 280px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: #f1f5f9;
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.service-card h3 {
+    font-size: 1.15rem;
+    margin: 1rem 0 0.5rem 0;
+    font-weight: bold;
+}
+
+.service-card p {
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
+    color: #334155;
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.7rem;
+}
+
+@media (max-width: 900px) {
+    .service-card {
+        min-width: 200px;
+        max-width: 220px;
+        flex: 0 0 220px;
+        height: 300px;
+        padding: 1rem 0.5rem;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
@@ -433,5 +545,17 @@ body {
 
     .section-title h2 {
         font-size: 2rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .footer-content {
+        grid-template-columns: 1fr;
     }
 }
