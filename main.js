@@ -23,7 +23,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const data = Object.fromEntries(formData);
     
     // Simulate form submission (in real implementation, you would send this to your server)
-    console.log('Form submitted with data:', data);
+    console.log('Cotización solicitada con datos:', data);
     
     // Show success message
     const successMessage = document.getElementById('successMessage');
@@ -39,7 +39,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     
     // In a real implementation, you would send the data to your server like this:
     /*
-    fetch('/submit-contact', {
+    fetch('/submit-quote', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -63,10 +63,10 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
     if (window.scrollY > 100) {
-        header.style.background = 'rgba(30, 64, 175, 0.95)';
+        header.style.background = 'rgba(225, 29, 72, 0.95)';
         header.style.backdropFilter = 'blur(10px)';
     } else {
-        header.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)';
+        header.style.background = 'linear-gradient(135deg, #e11d48 0%, #f97316 100%)';
         header.style.backdropFilter = 'none';
     }
 });
