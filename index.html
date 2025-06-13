@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Metadatos y enlaces a estilos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rv - Publicidad Diseño & Impresión</title>
@@ -8,8 +9,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- ================= HEADER ================= -->
     <header class="header">
+        <!-- Navegación principal -->
         <nav class="nav container" style="padding: 5px;">
             <div class="logo">
                 <img src="LOGO_SIN_FONDO.png" alt="Logo RV" style="width:70px;height:70px;object-fit:contain;">
@@ -24,8 +26,9 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- =============== HERO SECTION ============== -->
     <section id="inicio" class="hero section-fade" style="position: relative; overflow: hidden;">
+        <!-- Imagen de fondo y presentación principal -->
         <img 
             src="https://images.pexels.com/photos/6620982/pexels-photo-6620982.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2"
             alt="Imprenta moderna"
@@ -57,9 +60,10 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- ============== SERVICES SECTION =========== -->
     <section id="servicios" class="services section-fade">
         <div class="container">
+            <!-- Imagen ilustrativa y título de servicios -->
             <img 
                 src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80"
                 alt="Servicios de impresión y diseño"
@@ -71,6 +75,7 @@
             </div>
 
             <div class="carousel-wrapper">
+                <!-- Botones de navegación del carrusel y tarjetas de servicios -->
                 <button class="carousel-btn left" id="carouselPrev">&lt;</button>
                 <div class="services-carousel" id="servicesCarousel">
                     <div class="service-card">
@@ -110,9 +115,10 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- ============ TESTIMONIALS SECTION ========== -->
     <section id="testimonios" class="testimonials section-fade">
         <div class="container">
+            <!-- Imagen, título y testimonios dinámicos -->
             <img 
                 src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=900&q=80"
                 alt="Clientes satisfechos"
@@ -128,15 +134,16 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ============== CONTACT SECTION ============= -->
     <section id="contacto" class="contact section-fade">
         <div class="container">
+            <!-- Título y descripción de contacto -->
             <div class="section-title" style="margin-bottom:2.5rem;">
                 <h2>¿Listo para <span class="highlight">Crear</span> tu Proyecto?</h2>
                 <p>Solicita tu cotización gratuita y descubre cómo podemos hacer realidad tus ideas de impresión y diseño.</p>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; align-items: flex-start; justify-content: center;">
-                <!-- Formulario a la izquierda -->
+                <!-- Formulario de contacto a la izquierda -->
                 <div class="form-container" style="flex:1 1 380px; min-width:340px; max-width:520px;">
                     <div id="successMessage" class="success-message">
                         ¡Gracias por contactarnos! Te enviaremos tu cotización en las próximas 24 horas.
@@ -176,7 +183,7 @@
                         <button type="submit" class="form-submit">Solicitar Cotización Gratuita</button>
                     </form>
                 </div>
-                <!-- Mapa y contacto a la derecha -->
+                <!-- Mapa y datos de contacto a la derecha -->
                 <div style="flex:1 1 380px; min-width:340px; max-width:520px; display:flex; flex-direction:column; gap:2.5rem; justify-content:center;">
                     <!-- Mapa más grande arriba -->
                     <div style="width:100%; border-radius:12px; overflow:hidden;">
@@ -213,9 +220,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ================== FOOTER ================== -->
     <footer class="footer">
         <div class="container">
+            <!-- Sección de misión, visión, servicios y empresa -->
             <div class="footer-content" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 2rem;">
                 <!-- Misión -->
                 <div class="footer-section">
@@ -249,12 +257,14 @@
                 </div>
             </div>
             <div class="footer-bottom" style="text-align:center;">
+                <!-- Logo y derechos reservados -->
                 <img src="LOGO_SIN_FONDO.png" alt="Logo RV" style="width:120px;height:120px;object-fit:contain;margin-bottom:8px;">
                 <p>&copy; 2025 Rv Publicidad, Diseño & Impresión. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Script principal de la aplicación -->
     <script type="module" src="main.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+/* =================== RESET Y PALETA =================== */
 * {
     margin: 0;
     padding: 0;
@@ -19,6 +20,7 @@ body {
     padding: 0 20px;
 }
 
+/* =================== HEADER Y NAVEGACIÓN =================== */
 /* Header */
 .header {
     background: #1e293b; /* Gris oscuro para mejor contraste con el naranja */
@@ -65,6 +67,7 @@ body {
     color: #f97316;
 }
 
+/* =================== HERO SECTION =================== */
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #fff7ed 0%, #f1f5f9 100%);
@@ -156,6 +159,7 @@ body {
     font-size: 0.9rem;
 }
 
+/* =================== SERVICES SECTION =================== */
 /* Services Section */
 .services {
     background: #f1f5f9;
@@ -257,6 +261,7 @@ body {
     left: 0;
 }
 
+/* =================== CONTACT SECTION =================== */
 /* Contact Form */
 .contact {
     background: #f1f5f9;
@@ -324,6 +329,7 @@ body {
     color: #1e293b;
 }
 
+/* =================== TESTIMONIALS SECTION =================== */
 /* Testimonials */
 .testimonials {
     background: #fff7ed;
@@ -366,6 +372,7 @@ body {
     font-weight: 500;
 }
 
+/* =================== FOOTER =================== */
 /* Footer */
 .footer {
     background: #1e293b;
@@ -410,6 +417,7 @@ body {
     color: #f1f5f9;
 }
 
+/* =================== UTILIDADES Y RESPONSIVE =================== */
 /* Success Message */
 .success-message {
     display: none;
@@ -573,9 +581,6 @@ body {
 
 @media (max-width: 700px) {
     .footer-content {
-        grid-template-columns: 1fr;
-    }
-}
         grid-template-columns: 1fr;
     }
 }

@@ -1,11 +1,10 @@
+// Importa e inicializa Firebase App y Database
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
 import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
-// Este archivo puede eliminarse, el punto de entrada es /src/main.js
-
-// Espera a que el DOM esté listo antes de ejecutar el código
+// Espera a que el DOM esté listo antes de ejecutar el código principal
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for navigation links
+    // --- Navegación suave al hacer clic en los enlaces del menú ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Your web app's Firebase configuration
+    // --- Configuración e inicialización de Firebase ---
     const firebaseConfig = {
       apiKey: "AIzaSyA2d7MCr7YlIF7gCDZWM0AHbqM59aJHOxM",
       authDomain: "base-datos-rv.firebaseapp.com",
@@ -32,24 +31,22 @@ document.addEventListener('DOMContentLoaded', () => {
       measurementId: "G-2XS3472VRD",
       databaseURL: "https://base-datos-rv-default-rtdb.firebaseio.com"
     };
-
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
 
-    // Form submission handler con Firebase Realtime Database
+    // --- Manejo del envío del formulario de contacto ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
 
             try {
+                // Guarda los datos en Firebase Realtime Database
                 await push(ref(database, 'contactos'), data);
 
-                // Mostrar mensaje de éxito
+                // Muestra mensaje de éxito y resetea el formulario
                 const successMessage = document.getElementById('successMessage');
                 if (successMessage) {
                     successMessage.classList.add('show');
@@ -65,12 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animate elements on scroll (simple intersection observer)
+    // --- Animación de aparición de elementos al hacer scroll (Intersection Observer) ---
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -85,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Inicializa animación para service cards y testimonials
+    // Aplica animación a tarjetas de servicios y testimonios
     document.querySelectorAll('.service-card, .testimonial').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
@@ -93,16 +89,16 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Inicializa animación para secciones principales
+    // Aplica animación a las secciones principales
     document.querySelectorAll('.section-fade').forEach(section => {
-        section.classList.remove('visible'); // Asegura que inicien ocultas
+        section.classList.remove('visible');
         section.style.opacity = '0';
         section.style.transform = 'translateY(40px)';
         section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         observer.observe(section);
     });
 
-    // fetch GET para cargar testimonios originales desde testimonios.json
+    // --- Carga dinámica de testimonios desde un archivo JSON ---
     fetch('testimonios.json')
         .then(response => response.json())
         .then(testimonios => {
@@ -119,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `;
                 });
-                // Vuelve a observar los nuevos testimonios
+                // Observa los nuevos testimonios para animación
                 document.querySelectorAll('.testimonial').forEach(el => {
                     el.style.opacity = '0';
                     el.style.transform = 'translateY(20px)';
@@ -129,20 +125,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-    // Carousel para servicios
+    // --- Carrusel de servicios (carousel) ---
     const carousel = document.getElementById('servicesCarousel');
     if (carousel) {
         const cards = Array.from(carousel.querySelectorAll('.service-card'));
         const visibleCount = 3;
         let start = 0;
 
-        // Asegura que los elementos estén en el DOM en el mismo orden siempre
+        // Asegura el orden correcto de las tarjetas en el DOM
         cards.forEach(card => carousel.appendChild(card));
 
         function renderCarousel() {
-            // Oculta todos
             cards.forEach(card => card.style.display = 'none');
-            // Muestra los 3 consecutivos
             for (let i = 0; i < visibleCount; i++) {
                 const idx = (start + i) % cards.length;
                 cards[idx].style.display = 'flex';
@@ -165,17 +159,18 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCarousel();
     }
 
-    // Imágenes de Unsplash para cada servicio (orden: Impresión Digital, Diseño Gráfico, Banners y Lonas, Rotulación Vehicular, Señalética Empresarial, Empaques Personalizados)
+    // --- Modal para mostrar imágenes de servicios al hacer clic en una tarjeta ---
     const serviceImages = [
-        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80", // Impresión Digital
-        "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80", // Diseño Gráfico
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80", // Banners y Lonas
-        "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80", // Rotulación Vehicular
-        "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80", // Señalética Empresarial
-        "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80"  // Empaques Personalizados
+        // URLs de imágenes de Unsplash para cada servicio
+        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80"
     ];
 
-    // Crea el modal solo una vez
+    // Crea el modal solo una vez y lo reutiliza para todas las imágenes
     let modal = document.createElement('div');
     modal.id = "serviceModal";
     modal.style.display = "none";
@@ -196,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.body.appendChild(modal);
 
+    // Cierra el modal al hacer clic en la X o fuera de la ventana
     document.getElementById('closeModal').onclick = () => {
         modal.style.display = "none";
     };
@@ -203,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) modal.style.display = "none";
     };
 
-    // Asigna evento a cada service-card
+    // Asigna evento a cada tarjeta de servicio para mostrar la imagen correspondiente
     document.querySelectorAll('.service-card').forEach((card, idx) => {
         card.style.cursor = "pointer";
         card.addEventListener('click', () => {
