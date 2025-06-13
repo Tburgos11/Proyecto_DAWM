@@ -1,7 +1,7 @@
 {
   "name": "proyecto-dawm",
-  "version": "1.0.0",
-  "scripts": {
+  "version": "1.0.0"
+}
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
