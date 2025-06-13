@@ -99,43 +99,79 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Carga dinámica de testimonios desde un archivo JSON ---
-    fetch('./testimonios.json')
-        .then(response => {
-            if (!response.ok) throw new Error('No se pudo cargar testimonios.json');
-            return response.json();
-        })
-        .then(testimonios => {
-            const grid = document.getElementById('testimonialsGrid');
-            if (grid && Array.isArray(testimonios)) {
-                grid.innerHTML = '';
-                testimonios.forEach(t => {
-                    grid.innerHTML += `
-                        <div class="testimonial">
-                            <div class="testimonial-text">"${t.texto}"</div>
-                            <div class="testimonial-author">${t.autor}</div>
-                            <div class="testimonial-role">${t.rol}</div>
-                            <div class="testimonial-company">${t.empresa}</div>
-                        </div>
-                    `;
-                });
-                // Observa los nuevos testimonios para animación
-                document.querySelectorAll('.testimonial').forEach(el => {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(20px)';
-                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    observer.observe(el);
-                });
-            } else if (grid) {
-                grid.innerHTML = '<p style="color:#f97316;text-align:center;">No hay testimonios disponibles.</p>';
-            }
-        })
-        .catch(err => {
-            const grid = document.getElementById('testimonialsGrid');
-            if (grid) {
-                grid.innerHTML = '<p style="color:#f97316;text-align:center;">No se pudieron cargar los testimonios.</p>';
-            }
-            console.error('Error cargando testimonios:', err);
-        });
+    // Intenta primero con la ruta relativa, luego con la absoluta si falla (para Vercel/Render)
+    function cargarTestimonios() {
+        fetch('testimonios.json')
+            .then(response => {
+                if (!response.ok) throw new Error('No se pudo cargar testimonios.json');
+                return response.json();
+            })
+            .then(testimonios => {
+                const grid = document.getElementById('testimonialsGrid');
+                if (grid && Array.isArray(testimonios) && testimonios.length > 0) {
+                    grid.innerHTML = '';
+                    testimonios.forEach(t => {
+                        grid.innerHTML += `
+                            <div class="testimonial">
+                                <div class="testimonial-text">"${t.texto}"</div>
+                                <div class="testimonial-author">${t.autor}</div>
+                                <div class="testimonial-role">${t.rol}</div>
+                                <div class="testimonial-company">${t.empresa}</div>
+                            </div>
+                        `;
+                    });
+                    // Observa los nuevos testimonios para animación
+                    document.querySelectorAll('.testimonial').forEach(el => {
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(20px)';
+                        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        observer.observe(el);
+                    });
+                } else if (grid) {
+                    grid.innerHTML = '<p style="color:#f97316;text-align:center;">No hay testimonios disponibles.</p>';
+                }
+            })
+            .catch(err => {
+                // Intenta con la ruta absoluta si falla la relativa
+                fetch('/testimonios.json')
+                    .then(response => {
+                        if (!response.ok) throw new Error('No se pudo cargar testimonios.json');
+                        return response.json();
+                    })
+                    .then(testimonios => {
+                        const grid = document.getElementById('testimonialsGrid');
+                        if (grid && Array.isArray(testimonios) && testimonios.length > 0) {
+                            grid.innerHTML = '';
+                            testimonios.forEach(t => {
+                                grid.innerHTML += `
+                                    <div class="testimonial">
+                                        <div class="testimonial-text">"${t.texto}"</div>
+                                        <div class="testimonial-author">${t.autor}</div>
+                                        <div class="testimonial-role">${t.rol}</div>
+                                        <div class="testimonial-company">${t.empresa}</div>
+                                    </div>
+                                `;
+                            });
+                            document.querySelectorAll('.testimonial').forEach(el => {
+                                el.style.opacity = '0';
+                                el.style.transform = 'translateY(20px)';
+                                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                                observer.observe(el);
+                            });
+                        } else if (grid) {
+                            grid.innerHTML = '<p style="color:#f97316;text-align:center;">No hay testimonios disponibles.</p>';
+                        }
+                    })
+                    .catch(err2 => {
+                        const grid = document.getElementById('testimonialsGrid');
+                        if (grid) {
+                            grid.innerHTML = '<p style="color:#f97316;text-align:center;">No se pudieron cargar los testimonios.</p>';
+                        }
+                        console.error('Error cargando testimonios:', err, err2);
+                    });
+            });
+    }
+    cargarTestimonios();
 
     // --- Carrusel de servicios (carousel) ---
     const carousel = document.getElementById('servicesCarousel');
