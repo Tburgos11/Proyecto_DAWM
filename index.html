@@ -131,61 +131,84 @@
     <!-- Contact Section -->
     <section id="contacto" class="contact section-fade">
         <div class="container">
-            <img 
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
-                alt="Contáctanos"
-                style="width:100%;max-height:180px;object-fit:cover;border-radius:12px;margin-bottom:2rem;"
-            >
-            <div class="section-title">
+            <div class="section-title" style="margin-bottom:2.5rem;">
                 <h2>¿Listo para <span class="highlight">Crear</span> tu Proyecto?</h2>
                 <p>Solicita tu cotización gratuita y descubre cómo podemos hacer realidad tus ideas de impresión y diseño.</p>
             </div>
-
-            <div class="form-container">
-                <div id="successMessage" class="success-message">
-                    ¡Gracias por contactarnos! Te enviaremos tu cotización en las próximas 24 horas.
+            <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; align-items: flex-start; justify-content: center;">
+                <!-- Formulario a la izquierda -->
+                <div class="form-container" style="flex:1 1 380px; min-width:340px; max-width:520px;">
+                    <div id="successMessage" class="success-message">
+                        ¡Gracias por contactarnos! Te enviaremos tu cotización en las próximas 24 horas.
+                    </div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo *</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono">
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa">
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Servicio de Interés</label>
+                            <select id="servicio" name="servicio">
+                                <option value="diseno">Diseño Gráfico</option>
+                                <option value="impresion">Impresión Digital</option>
+                                <option value="gigantografias">Gigantografías</option>
+                                <option value="vinil">Vinil y Adhesivos</option>
+                                <option value="banners">Banners y Displays</option>
+                                <option value="promocional">Material Promocional</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Descripción del Proyecto *</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="Describe tu proyecto: medidas, cantidad, colores, fecha de entrega, etc..." required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Solicitar Cotización Gratuita</button>
+                    </form>
                 </div>
-
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo *</label>
-                        <input type="text" id="nombre" name="nombre" required>
+                <!-- Mapa y contacto a la derecha -->
+                <div style="flex:1 1 380px; min-width:340px; max-width:520px; display:flex; flex-direction:column; gap:2.5rem; justify-content:center;">
+                    <!-- Mapa más grande arriba -->
+                    <div style="width:100%; border-radius:12px; overflow:hidden;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d249.18045684001916!2d-79.94416164840885!3d-2.196323849779893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sec!4v1749655172828!5m2!1ses!2sec" 
+                            width="100%" 
+                            height="260" 
+                            style="border:0; border-radius:12px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
-
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico *</label>
-                        <input type="email" id="email" name="email" required>
+                    <!-- Datos de contacto más grandes abajo -->
+                    <div style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(30,41,59,0.06); padding:2rem; font-size:1.15rem;">
+                        <h4 style="color:#f97316; margin-bottom:0.7rem;">Contacto</h4>
+                        <p style="margin-bottom:0.5rem;">📧 jordyburgos233@gmail.com</p>
+                        <p style="margin-bottom:0.5rem;">📞 +593 98 130 3252</p>
+                        <p style="margin-bottom:1.5rem;">📍 Urb.Girasol mz 104 villa 3<br>Guayaquil, Ecuador</p>
+                        <div style="display:flex; gap:18px; margin-top:1.5rem;">
+                            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:32px;height:32px;filter:grayscale(1) brightness(0.6);transition:filter 0.2s;" onmouseover="this.style.filter='none'" onmouseout="this.style.filter='grayscale(1) brightness(0.6)'">
+                            </a>
+                            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="width:32px;height:32px;filter:grayscale(1) brightness(0.6);transition:filter 0.2s;" onmouseover="this.style.filter='none'" onmouseout="this.style.filter='grayscale(1) brightness(0.6)'">
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width:32px;height:32px;filter:grayscale(1) brightness(0.6);transition:filter 0.2s;" onmouseover="this.style.filter='none'" onmouseout="this.style.filter='grayscale(1) brightness(0.6)'">
+                            </a>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono" name="telefono">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="empresa">Empresa</label>
-                        <input type="text" id="empresa" name="empresa">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="servicio">Servicio de Interés</label>
-                        <select id="servicio" name="servicio">
-                            <option value="diseno">Diseño Gráfico</option>
-                            <option value="impresion">Impresión Digital</option>
-                            <option value="gigantografias">Gigantografías</option>
-                            <option value="vinil">Vinil y Adhesivos</option>
-                            <option value="banners">Banners y Displays</option>
-                            <option value="promocional">Material Promocional</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="mensaje">Descripción del Proyecto *</label>
-                        <textarea id="mensaje" name="mensaje" placeholder="Describe tu proyecto: medidas, cantidad, colores, fecha de entrega, etc..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="form-submit">Solicitar Cotización Gratuita</button>
-                </form>
+                </div>
             </div>
         </div>
     </section>
@@ -193,12 +216,18 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-content" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 2rem;">
+                <!-- Misión -->
                 <div class="footer-section">
-                    <h4>Rv - Publicidad Diseño & Impresión</h4>
-                    <p>Transformamos tus ideas en impresiones de alta calidad con tecnología de vanguardia y servicio personalizado.</p>
+                    <h4>Misión</h4>
+                    <p>Transformar ideas en impresiones de alta calidad, brindando soluciones creativas y tecnológicas en diseño gráfico, impresión y publicidad, superando las expectativas de nuestros clientes.</p>
                 </div>
-
+                <!-- Visión -->
+                <div class="footer-section">
+                    <h4>Visión</h4>
+                    <p>Ser la empresa líder en soluciones integrales de diseño e impresión en la región, reconocida por la innovación, calidad y excelencia en el servicio al cliente.</p>
+                </div>
+                <!-- Servicios -->
                 <div class="footer-section">
                     <h4>Servicios</h4>
                     <ul>
@@ -208,7 +237,7 @@
                         <li><a href="#servicios">Vinil y Adhesivos</a></li>
                     </ul>
                 </div>
-
+                <!-- Empresa -->
                 <div class="footer-section">
                     <h4>Empresa</h4>
                     <ul>
@@ -218,31 +247,9 @@
                         <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>📧 jordyburgos233@gmail.com</p>
-                    <p>📞 +593 98 130 3252</p>
-                    <p>📍 Urb.Girasol mz 104 villa 3<br>Guayaquil, Ecuador</p>
-                </div>
-                <div class="footer-section footer-map-section">
-                    <h4>Ubicación</h4>
-                    <div class="footer-map" style="margin-top: 10px;">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d249.18045684001916!2d-79.94416164840885!3d-2.196323849779893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sec!4v1749655172828!5m2!1ses!2sec" 
-                            width="100%" 
-                            height="180" 
-                            style="border:0; border-radius:8px;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
             </div>
-
             <div class="footer-bottom" style="text-align:center;">
-                <img src="LOGO_SIN_FONDO.png" alt="Logo RV" style="width:150px;height:150px;object-fit:contain;margin-bottom:8px;">
+                <img src="LOGO_SIN_FONDO.png" alt="Logo RV" style="width:120px;height:120px;object-fit:contain;margin-bottom:8px;">
                 <p>&copy; 2025 Rv Publicidad, Diseño & Impresión. Todos los derechos reservados.</p>
             </div>
         </div>

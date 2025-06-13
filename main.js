@@ -65,11 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Elimina completamente el listener de scroll para el header
-    // window.addEventListener('scroll', function() {
-    //     // Código eliminado para evitar cualquier cambio de color en el header
-    // });
-
     // Animate elements on scroll (simple intersection observer)
     const observerOptions = {
         threshold: 0.1,
@@ -141,11 +136,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const visibleCount = 3;
         let start = 0;
 
+        // Asegura que los elementos estén en el DOM en el mismo orden siempre
+        cards.forEach(card => carousel.appendChild(card));
+
         function renderCarousel() {
+            // Oculta todos
             cards.forEach(card => card.style.display = 'none');
+            // Muestra los 3 consecutivos
             for (let i = 0; i < visibleCount; i++) {
                 const idx = (start + i) % cards.length;
-                cards[idx].style.display = 'flex'; // Usa 'flex' para mantener el diseño
+                cards[idx].style.display = 'flex';
             }
         }
 
