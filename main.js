@@ -65,19 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Header background on scroll
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('.header');
-        if (header) {
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(225, 29, 72, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, #e11d48 0%, #f97316 100%)';
-                header.style.backdropFilter = 'none';
-            }
-        }
-    });
+    // Elimina completamente el listener de scroll para el header
+    // window.addEventListener('scroll', function() {
+    //     // Código eliminado para evitar cualquier cambio de color en el header
+    // });
 
     // Animate elements on scroll (simple intersection observer)
     const observerOptions = {
@@ -173,4 +164,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
         renderCarousel();
     }
+
+    // Imágenes de Unsplash para cada servicio (orden: Impresión Digital, Diseño Gráfico, Banners y Lonas, Rotulación Vehicular, Señalética Empresarial, Empaques Personalizados)
+    const serviceImages = [
+        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80", // Impresión Digital
+        "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80", // Diseño Gráfico
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80", // Banners y Lonas
+        "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80", // Rotulación Vehicular
+        "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80", // Señalética Empresarial
+        "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80"  // Empaques Personalizados
+    ];
+
+    // Crea el modal solo una vez
+    let modal = document.createElement('div');
+    modal.id = "serviceModal";
+    modal.style.display = "none";
+    modal.style.position = "fixed";
+    modal.style.top = "0";
+    modal.style.left = "0";
+    modal.style.width = "100vw";
+    modal.style.height = "100vh";
+    modal.style.background = "rgba(30,41,59,0.7)";
+    modal.style.justifyContent = "center";
+    modal.style.alignItems = "center";
+    modal.style.zIndex = "2000";
+    modal.innerHTML = `
+        <div style="background:#fff; padding:16px; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.2); position:relative; max-width:90vw; max-height:90vh;">
+            <span id="closeModal" style="position:absolute;top:8px;right:8px;cursor:pointer;font-size:1.2rem;color:#f97316;z-index:2100;background:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.08);">&times;</span>
+            <img id="modalImg" src="" alt="Servicio" style="max-width:80vw;max-height:70vh;display:block;margin:auto;border-radius:8px;">
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    document.getElementById('closeModal').onclick = () => {
+        modal.style.display = "none";
+    };
+    modal.onclick = (e) => {
+        if (e.target === modal) modal.style.display = "none";
+    };
+
+    // Asigna evento a cada service-card
+    document.querySelectorAll('.service-card').forEach((card, idx) => {
+        card.style.cursor = "pointer";
+        card.addEventListener('click', () => {
+            const imgSrc = serviceImages[idx] || serviceImages[0];
+            document.getElementById('modalImg').src = imgSrc;
+            modal.style.display = "flex";
+        });
+    });
 });

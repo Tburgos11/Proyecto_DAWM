@@ -4,11 +4,13 @@
     box-sizing: border-box;
 }
 
+/* Paleta: Naranja principal: #f97316, Gris oscuro: #1e293b, Gris claro: #f1f5f9 */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #ffffff;
+    color: #1e293b;
+    background-color: #f1f5f9;
 }
 
 .container {
@@ -19,7 +21,7 @@ body {
 
 /* Header */
 .header {
-    background: linear-gradient(135deg, #e11d48 0%, #f97316 100%);
+    background: #1e293b; /* Gris oscuro para mejor contraste con el naranja */
     color: white;
     padding: 1rem 0;
     position: fixed;
@@ -40,6 +42,9 @@ body {
     font-weight: bold;
     text-align: left;
     margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .nav-links {
@@ -49,18 +54,20 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, color 0.3s;
+    font-weight: 600;
 }
 
 .nav-links a:hover {
     opacity: 0.8;
+    color: #f97316;
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #fef7ff 0%, #fdf2f8 100%);
+    background: linear-gradient(135deg, #fff7ed 0%, #f1f5f9 100%);
     padding: 120px 0 80px;
     text-align: center;
 }
@@ -73,13 +80,14 @@ body {
 }
 
 .hero .highlight {
-    color: #e11d48;
+    color: #f97316;
 }
 
 .hero p {
+    color: #1e293b;
     font-size: 1.25rem;
     margin-bottom: 2rem;
-    color: #64748b;
+    color: #fff;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -106,23 +114,23 @@ body {
 }
 
 .btn-primary {
-    background: #e11d48;
+    background: #f97316;
     color: white;
 }
 
 .btn-primary:hover {
-    background: #be185d;
-    transform: translateY(-2px);
+    background: #f59e42;
+    color: #1e293b;
 }
 
 .btn-secondary {
     background: transparent;
-    color: #e11d48;
-    border: 2px solid #e11d48;
+    color: #f97316;
+    border: 2px solid #f97316;
 }
 
 .btn-secondary:hover {
-    background: #e11d48;
+    background: #f97316;
     color: white;
 }
 
@@ -138,20 +146,20 @@ body {
 }
 
 .stat-number {
+    color: #f97316;
     font-size: 2.5rem;
     font-weight: bold;
-    color: #e11d48;
 }
 
 .stat-label {
+    color: #1e293b;
     font-size: 0.9rem;
-    color: #64748b;
 }
 
 /* Services Section */
 .services {
+    background: #fff7ed;
     padding: 80px 0;
-    background: white;
 }
 
 .section-title {
@@ -166,10 +174,11 @@ body {
 }
 
 .section-title .highlight {
-    color: #e11d48;
+    color: #f97316;
 }
 
 .section-title p {
+    color: #64748b;
     font-size: 1.2rem;
     color: #64748b;
     max-width: 600px;
@@ -184,6 +193,8 @@ body {
 }
 
 .service-card {
+    background: #fff;
+    border: 1px solid #f1f5f9;
     min-width: 260px;
     max-width: 280px;
     flex: 0 0 280px;
@@ -192,7 +203,6 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: #f1f5f9;
     border-radius: 12px;
     padding: 1.5rem 1rem;
     box-shadow: 0 2px 8px rgba(30, 64, 175, 0.06);
@@ -203,23 +213,26 @@ body {
 }
 
 .service-card:hover {
+    border-color: #f97316;
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border-color: #e11d48;
 }
 
 .service-icon {
+    color: #f97316;
     font-size: 2.5rem;
     margin-bottom: 0.7rem;
 }
 
 .service-card h3 {
+    color: #1e293b;
     font-size: 1.15rem;
     margin: 1rem 0 0.5rem 0;
     font-weight: bold;
 }
 
 .service-card p {
+    color: #64748b;
     font-size: 0.98rem;
     margin-bottom: 1rem;
     color: #334155;
@@ -238,7 +251,7 @@ body {
 
 .service-features li::before {
     content: "•";
-    color: #e11d48;
+    color: #f97316;
     font-weight: bold;
     position: absolute;
     left: 0;
@@ -246,14 +259,14 @@ body {
 
 /* Contact Form */
 .contact {
+    background: #f1f5f9;
     padding: 80px 0;
-    background: #fef7ff;
 }
 
 .form-container {
+    background: #fff;
     max-width: 600px;
     margin: 0 auto;
-    background: white;
     padding: 3rem;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -264,18 +277,18 @@ body {
 }
 
 .form-group label {
+    color: #1e293b;
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: #374151;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
+    border: 2px solid #f1f5f9;
     width: 100%;
     padding: 12px;
-    border: 2px solid #e5e7eb;
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s;
@@ -284,8 +297,8 @@ body {
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
+    border-color: #f97316;
     outline: none;
-    border-color: #e11d48;
 }
 
 .form-group textarea {
@@ -294,9 +307,9 @@ body {
 }
 
 .form-submit {
-    width: 100%;
-    background: #e11d48;
+    background: #f97316;
     color: white;
+    width: 100%;
     padding: 15px;
     border: none;
     border-radius: 8px;
@@ -307,14 +320,14 @@ body {
 }
 
 .form-submit:hover {
-    background: #be185d;
-    transform: translateY(-2px);
+    background: #f59e42;
+    color: #1e293b;
 }
 
 /* Testimonials */
 .testimonials {
+    background: #fff7ed;
     padding: 80px 0;
-    background: #f8fafc;
 }
 
 .testimonials-grid {
@@ -325,7 +338,7 @@ body {
 }
 
 .testimonial {
-    background: white;
+    background: #fff;
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -338,8 +351,8 @@ body {
 }
 
 .testimonial-author {
-    font-weight: 600;
     color: #1e293b;
+    font-weight: 600;
 }
 
 .testimonial-role {
@@ -348,8 +361,8 @@ body {
 }
 
 .testimonial-company {
+    color: #f97316;
     font-size: 0.8rem;
-    color: #e11d48;
     font-weight: 500;
 }
 
@@ -368,8 +381,8 @@ body {
 }
 
 .footer-section h4 {
-    margin-bottom: 1rem;
     color: #f97316;
+    margin-bottom: 1rem;
 }
 
 .footer-section ul {
@@ -381,20 +394,20 @@ body {
 }
 
 .footer-section ul li a {
-    color: #94a3b8;
+    color: #f1f5f9;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer-section ul li a:hover {
-    color: white;
+    color: #f97316;
 }
 
 .footer-bottom {
     border-top: 1px solid #374151;
     padding-top: 1rem;
     text-align: center;
-    color: #94a3b8;
+    color: #f1f5f9;
 }
 
 /* Success Message */
@@ -452,7 +465,7 @@ body {
 }
 
 .carousel-btn {
-    background: #e11d48;
+    background: #f97316;
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -475,6 +488,8 @@ body {
 }
 
 .service-card {
+    background: #fff;
+    border: 1px solid #f1f5f9;
     min-width: 260px;
     max-width: 280px;
     flex: 0 0 280px;
@@ -483,7 +498,6 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: #f1f5f9;
     border-radius: 12px;
     padding: 1.5rem 1rem;
     box-shadow: 0 2px 8px rgba(30, 64, 175, 0.06);
@@ -494,18 +508,21 @@ body {
 }
 
 .service-card h3 {
+    color: #1e293b;
     font-size: 1.15rem;
     margin: 1rem 0 0.5rem 0;
     font-weight: bold;
 }
 
 .service-card p {
+    color: #64748b;
     font-size: 0.98rem;
     margin-bottom: 1rem;
     color: #334155;
 }
 
 .service-icon {
+    color: #f97316;
     font-size: 2.5rem;
     margin-bottom: 0.7rem;
 }
@@ -556,6 +573,9 @@ body {
 
 @media (max-width: 700px) {
     .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
         grid-template-columns: 1fr;
     }
 }
