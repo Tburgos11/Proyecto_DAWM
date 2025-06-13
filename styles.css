@@ -668,6 +668,42 @@ body {
     }
 }
 
+/* =================== MEJORAS RESPONSIVE AVANZADAS =================== */
+
+/* Header: logo y menú centrados, menú vertical en móvil */
+@media (max-width: 768px) {
+    .header {
+        padding: 0.5rem 0;
+    }
+    .nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .logo {
+        justify-content: center;
+        width: 100%;
+        font-size: 1.2rem;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        align-items: center;
+        padding-left: 0;
+        display: flex;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+}
+
 /* Hero: imagen y textos adaptables */
 @media (max-width: 768px) {
     .hero {
@@ -683,38 +719,60 @@ body {
     }
     .hero img,
     .hero > img {
-        height: 60vh !important;
-        min-height: 220px;
+        height: 50vw !important;
+        min-height: 140px;
+        max-height: 220px;
     }
 }
 
-/* Servicios: imagen y cards adaptables */
+/* Servicios: imagen y cards adaptables, carrusel de 1 elemento en móvil */
 @media (max-width: 768px) {
     .services .container > img {
-        max-height: 140px !important;
+        max-height: 100px !important;
         border-radius: 8px !important;
     }
     .carousel-wrapper {
-        flex-direction: column;
-        gap: 0.5rem;
+        flex-direction: row;
+        gap: 0.2rem;
         max-width: 100vw;
+        align-items: center;
+        justify-content: center;
     }
     .services-carousel {
-        gap: 0.5rem;
+        gap: 0;
         min-height: 0;
+        width: 100vw;
+        max-width: 100vw;
+        justify-content: center;
+        align-items: center;
     }
     .service-card {
         min-width: 90vw !important;
         max-width: 95vw !important;
         height: auto;
         padding: 1rem 0.5rem;
+        margin: 0 auto;
+    }
+    /* Solo mostrar una card en el carrusel */
+    .services-carousel .service-card {
+        display: none !important;
+    }
+    .services-carousel .service-card.visible-mobile {
+        display: flex !important;
+    }
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+        margin: 0 2px;
+        position: static;
     }
 }
 
 /* Testimonios: imagen y grid adaptables */
 @media (max-width: 768px) {
     .testimonials .container > img {
-        max-height: 100px !important;
+        max-height: 80px !important;
         border-radius: 8px !important;
     }
     .testimonials-grid {
@@ -743,7 +801,7 @@ body {
     }
 }
 
-/* Footer: columnas a filas, textos centrados, logo pequeño */
+/* Footer: columnas a filas, textos centrados, logo pequeño y padding reducido */
 @media (max-width: 900px) {
     .footer-content {
         grid-template-columns: 1fr !important;
@@ -757,6 +815,9 @@ body {
     .footer-bottom img {
         width: 70px !important;
         height: 70px !important;
+    }
+    .footer {
+        padding: 1.5rem 0 0.5rem;
     }
 }
 
@@ -776,4 +837,177 @@ img, .services .container > img, .testimonials .container > img {
 .testimonial-company {
     word-break: break-word;
     hyphens: auto;
+}
+
+/* =================== OPTIMIZACIÓN RESPONSIVE REAL =================== */
+
+/* Contenedor principal: padding reducido y ancho completo en móvil */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100vw;
+        padding: 0 6px;
+    }
+}
+
+/* Hero: imagen y textos adaptables, padding reducido */
+@media (max-width: 768px) {
+    .hero {
+        padding: 70px 0 24px;
+    }
+    .hero h1 {
+        font-size: 1.3rem;
+        padding: 0 4px;
+        line-height: 1.2;
+    }
+    .hero p {
+        font-size: 0.98rem;
+        padding: 0 4px;
+        max-width: 98vw;
+    }
+    .hero img,
+    .hero > img {
+        height: 38vw !important;
+        min-height: 100px;
+        max-height: 160px;
+    }
+    .stats {
+        flex-direction: column;
+        gap: 0.7rem;
+        align-items: center;
+    }
+}
+
+/* Servicios: imagen, cards y carrusel 100% ancho, solo 1 card visible */
+@media (max-width: 768px) {
+    .services .container > img {
+        max-height: 80px !important;
+        border-radius: 8px !important;
+        width: 100vw !important;
+        margin-left: -6px;
+    }
+    .carousel-wrapper {
+        flex-direction: row;
+        gap: 0.2rem;
+        max-width: 100vw;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+    }
+    .services-carousel {
+        gap: 0;
+        min-height: 0;
+        width: 100vw;
+        max-width: 100vw;
+        justify-content: center;
+        align-items: center;
+    }
+    .service-card {
+        min-width: 98vw !important;
+        max-width: 99vw !important;
+        height: auto;
+        padding: 1rem 0.5rem;
+        margin: 0 auto;
+    }
+    /* Solo mostrar una card en el carrusel */
+    .services-carousel .service-card {
+        display: none !important;
+    }
+    .services-carousel .service-card.visible-mobile {
+        display: flex !important;
+    }
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+        margin: 0 2px;
+        position: static;
+    }
+    .section-title h2 {
+        font-size: 1.1rem;
+    }
+    .section-title p {
+        font-size: 0.95rem;
+        max-width: 98vw;
+    }
+}
+
+/* Testimonios: imagen y grid adaptables */
+@media (max-width: 768px) {
+    .testimonials .container > img {
+        max-height: 60px !important;
+        border-radius: 8px !important;
+        width: 100vw !important;
+        margin-left: -6px;
+    }
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+    }
+    .testimonial {
+        padding: 0.7rem;
+    }
+}
+
+/* Contacto: formulario y datos en columna, padding reducido */
+@media (max-width: 900px) {
+    #contacto .container > div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: stretch !important;
+    }
+    #contacto .form-container,
+    #contacto > .container > div > div[style*="flex-direction:column"] {
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+    #contacto .form-container {
+        padding: 0.7rem !important;
+    }
+    #contacto .section-title {
+        margin-bottom: 1.2rem !important;
+    }
+}
+
+/* Footer: columnas a filas, textos centrados, logo pequeño y padding reducido */
+@media (max-width: 900px) {
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 0.7rem !important;
+        text-align: center;
+    }
+    .footer-section {
+        margin-bottom: 1rem;
+        padding: 0 2px;
+    }
+    .footer-bottom img {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .footer {
+        padding: 1rem 0 0.5rem;
+    }
+}
+
+/* Imágenes adaptables en todas las secciones */
+img, .services .container > img, .testimonials .container > img {
+    max-width: 100vw;
+    height: auto;
+    display: block;
+}
+
+/* Ajuste para textos largos en cards y testimonios */
+.service-card h3,
+.service-card p,
+.testimonial-text,
+.testimonial-author,
+.testimonial-role,
+.testimonial-company {
+    word-break: break-word;
+    hyphens: auto;
+}
+
+/* Ajuste para evitar scroll horizontal */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
 }

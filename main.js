@@ -129,17 +129,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.getElementById('servicesCarousel');
     if (carousel) {
         const cards = Array.from(carousel.querySelectorAll('.service-card'));
-        const visibleCount = 3;
+        let visibleCount = window.innerWidth <= 768 ? 1 : 3;
         let start = 0;
 
         // Asegura el orden correcto de las tarjetas en el DOM
         cards.forEach(card => carousel.appendChild(card));
 
         function renderCarousel() {
-            cards.forEach(card => card.style.display = 'none');
+            // Responsive: solo 1 card visible en móvil, 3 en desktop
+            visibleCount = window.innerWidth <= 768 ? 1 : 3;
+            cards.forEach(card => {
+                card.style.display = 'none';
+                card.classList.remove('visible-mobile');
+            });
             for (let i = 0; i < visibleCount; i++) {
                 const idx = (start + i) % cards.length;
                 cards[idx].style.display = 'flex';
+                // Para móvil, añade clase para CSS
+                if (visibleCount === 1) cards[idx].classList.add('visible-mobile');
             }
         }
 
@@ -155,6 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderCarousel();
             };
         }
+
+        // Redibuja el carrusel al cambiar el tamaño de la ventana
+        window.addEventListener('resize', renderCarousel);
 
         renderCarousel();
     }
