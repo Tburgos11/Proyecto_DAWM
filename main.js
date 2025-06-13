@@ -99,11 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Carga dinámica de testimonios desde un archivo JSON ---
-    fetch('testimonios.json')
-        .then(response => response.json())
+    fetch('./testimonios.json')
+        .then(response => {
+            if (!response.ok) throw new Error('No se pudo cargar testimonios.json');
+            return response.json();
+        })
         .then(testimonios => {
             const grid = document.getElementById('testimonialsGrid');
-            if (grid) {
+            if (grid && Array.isArray(testimonios)) {
                 grid.innerHTML = '';
                 testimonios.forEach(t => {
                     grid.innerHTML += `
@@ -122,7 +125,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                     observer.observe(el);
                 });
+            } else if (grid) {
+                grid.innerHTML = '<p style="color:#f97316;text-align:center;">No hay testimonios disponibles.</p>';
             }
+        })
+        .catch(err => {
+            const grid = document.getElementById('testimonialsGrid');
+            if (grid) {
+                grid.innerHTML = '<p style="color:#f97316;text-align:center;">No se pudieron cargar los testimonios.</p>';
+            }
+            console.error('Error cargando testimonios:', err);
         });
 
     // --- Carrusel de servicios (carousel) ---
