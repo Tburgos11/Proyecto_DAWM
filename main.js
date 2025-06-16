@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(err => {
                 const grid = document.getElementById('testimonialsGrid');
                 if (grid) {
-                    grid.innerHTML = '<p style="color:#f97316;text-align:center;">No se pudieron cargar los testimonios.</p>';
+                    grid.innerHTML = `<p style="color:#f97316;text-align:center;">Error cargando testimonios: ${err.message}</p>`;
                 }
                 console.error('Error cargando testimonios:', err);
             });

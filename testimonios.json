@@ -1,0 +1,20 @@
+[
+  {
+    "texto": "Gracias a su creatividad y calidad de impresión, logramos que nuestra campaña publicitaria destaque en toda la ciudad. ¡Excelente servicio y atención personalizada!",
+    "autor": "María González",
+    "rol": "Gerente de Marketing",
+    "empresa": "Eventos Gye"
+  },
+  {
+    "texto": "El diseño de nuestros banners y flyers superó nuestras expectativas. La entrega fue rápida y el resultado profesional. Sin duda volveremos a trabajar con ustedes.",
+    "autor": "Carlos Mendoza",
+    "rol": "Director Comercial",
+    "empresa": "Distribuidora Mendoza"
+  },
+  {
+    "texto": "Con su apoyo pudimos renovar toda la imagen de nuestra empresa. Los logotipos y vinilos quedaron perfectos. ¡Recomendados para cualquier negocio!",
+    "autor": "Ana Rodríguez",
+    "rol": "Propietaria",
+    "empresa": "Boutique Ana"
+  }
+]
