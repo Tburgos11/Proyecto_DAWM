@@ -111,10 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Carga dinámica de testimonios desde un archivo JSON ---
-    // Intenta cargar desde la carpeta /public o raíz del deploy (Vercel/Render usan /public)
+    // Ahora la ruta es /testimonios.json porque está en public/
     function cargarTestimonios() {
-        // Intenta primero con /testimonios.json (raíz pública)
-        fetch('/testimonios.json')
+        fetch('public/testimonios.json')
             .then(response => {
                 if (!response.ok) throw new Error('No se pudo cargar testimonios.json');
                 return response.json();
@@ -144,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
             .catch(err => {
-                // Si falla, muestra mensaje de error
                 const grid = document.getElementById('testimonialsGrid');
                 if (grid) {
                     grid.innerHTML = '<p style="color:#f97316;text-align:center;">No se pudieron cargar los testimonios.</p>';
