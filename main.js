@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Carga dinámica de testimonios desde un archivo JSON ---
     // Ahora la ruta es /testimonios.json porque está en public/
     function cargarTestimonios() {
-        fetch('public/testimonios.json')
+        fetch('/testimonios.json')
             .then(response => {
                 if (!response.ok) throw new Error('No se pudo cargar testimonios.json');
                 return response.json();
