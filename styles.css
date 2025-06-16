@@ -155,7 +155,7 @@ body {
 }
 
 .stat-label {
-    color: #1e293b;
+    color: #eff0f1;
     font-size: 0.9rem;
 }
 
@@ -415,6 +415,12 @@ body {
     padding-top: 1rem;
     text-align: center;
     color: #f1f5f9;
+}
+
+.footer-bottom img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* =================== UTILIDADES Y RESPONSIVE =================== */
@@ -844,6 +850,9 @@ body {
     .footer-bottom img {
         width: 70px !important;
         height: 70px !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
