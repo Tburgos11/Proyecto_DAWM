@@ -4,13 +4,14 @@ import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.9.
 
 // Espera a que el DOM esté listo antes de ejecutar el código principal
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Navegación suave al hacer clic en los enlaces del menú ---
+    // --- Navegación suave solo para enlaces internos ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
+            const href = this.getAttribute('href');
+            if (href.length > 1 && document.querySelector(href)) {
+                e.preventDefault();
                 const headerHeight = document.querySelector('.header').offsetHeight;
+                const target = document.querySelector(href);
                 const targetPosition = target.offsetTop - headerHeight;
                 window.scrollTo({
                     top: targetPosition,
@@ -98,6 +99,17 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 
+    // Forzar visibilidad inicial si el IntersectionObserver no las muestra
+    document.querySelectorAll('.section-fade').forEach(section => {
+        setTimeout(() => {
+            if (!section.classList.contains('visible')) {
+                section.classList.add('visible');
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }
+        }, 800);
+    });
+
     // --- Carga dinámica de testimonios desde un archivo JSON ---
     // Intenta cargar desde la carpeta /public o raíz del deploy (Vercel/Render usan /public)
     function cargarTestimonios() {
@@ -144,49 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Carrusel de servicios (carousel) ---
     const carousel = document.getElementById('servicesCarousel');
-    if (carousel) {
-        const cards = Array.from(carousel.querySelectorAll('.service-card'));
-        let visibleCount = window.innerWidth <= 768 ? 1 : 3;
-        let start = 0;
-
-        // Asegura el orden correcto de las tarjetas en el DOM
-        cards.forEach(card => carousel.appendChild(card));
-
-        function renderCarousel() {
-            // Responsive: solo 1 card visible en móvil, 3 en desktop
-            visibleCount = window.innerWidth <= 768 ? 1 : 3;
-            cards.forEach(card => {
-                card.style.display = 'none';
-                card.classList.remove('visible-mobile');
-            });
-            for (let i = 0; i < visibleCount; i++) {
-                const idx = (start + i) % cards.length;
-                cards[idx].style.display = 'flex';
-                // Para móvil, añade clase para CSS
-                if (visibleCount === 1) cards[idx].classList.add('visible-mobile');
-            }
-        }
-
-        const prevBtn = document.getElementById('carouselPrev');
-        const nextBtn = document.getElementById('carouselNext');
-        if (prevBtn && nextBtn) {
-            prevBtn.onclick = function() {
-                start = (start - 1 + cards.length) % cards.length;
-                renderCarousel();
-            };
-            nextBtn.onclick = function() {
-                start = (start + 1) % cards.length;
-                renderCarousel();
-            };
-        }
-
-        // Redibuja el carrusel al cambiar el tamaño de la ventana
-        window.addEventListener('resize', renderCarousel);
-
-        renderCarousel();
-    }
-
-    // --- Modal para mostrar imágenes de servicios al hacer clic en una tarjeta ---
     const serviceImages = [
         // URLs de imágenes de Unsplash para cada servicio
         "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
@@ -197,42 +166,80 @@ document.addEventListener('DOMContentLoaded', () => {
         "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80"
     ];
 
-    // Crea el modal solo una vez y lo reutiliza para todas las imágenes
-    let modal = document.createElement('div');
-    modal.id = "serviceModal";
-    modal.style.display = "none";
-    modal.style.position = "fixed";
-    modal.style.top = "0";
-    modal.style.left = "0";
-    modal.style.width = "100vw";
-    modal.style.height = "100vh";
-    modal.style.background = "rgba(30,41,59,0.7)";
-    modal.style.justifyContent = "center";
-    modal.style.alignItems = "center";
-    modal.style.zIndex = "2000";
-    modal.innerHTML = `
-        <div style="background:#fff; padding:16px; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.2); position:relative; max-width:90vw; max-height:90vh;">
-            <span id="closeModal" style="position:absolute;top:8px;right:8px;cursor:pointer;font-size:1.2rem;color:#f97316;z-index:2100;background:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.08);">&times;</span>
-            <img id="modalImg" src="" alt="Servicio" style="max-width:80vw;max-height:70vh;display:block;margin:auto;border-radius:8px;">
-        </div>
-    `;
-    document.body.appendChild(modal);
-
-    // Cierra el modal al hacer clic en la X o fuera de la ventana
-    document.getElementById('closeModal').onclick = () => {
+    // Modal para imágenes de servicios
+    let modal = document.getElementById('serviceModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = "serviceModal";
+        modal.style.display = "none";
+        modal.style.position = "fixed";
+        modal.style.top = "0";
+        modal.style.left = "0";
+        modal.style.width = "100vw";
+        modal.style.height = "100vh";
+        modal.style.background = "rgba(30,41,59,0.7)";
+        modal.style.justifyContent = "center";
+        modal.style.alignItems = "center";
+        modal.style.zIndex = "2000";
+        modal.innerHTML = `
+            <div style="background:#fff; padding:16px; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.2); position:relative; max-width:90vw; max-height:90vh;">
+                <span id="closeModal" style="position:absolute;top:8px;right:8px;cursor:pointer;font-size:1.2rem;color:#f97316;z-index:2100;background:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.08);">&times;</span>
+                <img id="modalImg" src="" alt="Servicio" style="max-width:80vw;max-height:70vh;display:block;margin:auto;border-radius:8px;">
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    modal.querySelector('#closeModal').onclick = () => {
         modal.style.display = "none";
     };
     modal.onclick = (e) => {
         if (e.target === modal) modal.style.display = "none";
     };
 
-    // Asigna evento a cada tarjeta de servicio para mostrar la imagen correspondiente
-    document.querySelectorAll('.service-card').forEach((card, idx) => {
-        card.style.cursor = "pointer";
-        card.addEventListener('click', () => {
-            const imgSrc = serviceImages[idx] || serviceImages[0];
-            document.getElementById('modalImg').src = imgSrc;
-            modal.style.display = "flex";
-        });
-    });
+    if (carousel) {
+        const cards = Array.from(carousel.querySelectorAll('.service-card'));
+        let start = 0;
+
+        function getVisibleCount() {
+            return window.innerWidth <= 768 ? 1 : 3;
+        }
+
+        function renderCarousel() {
+            const visibleCount = getVisibleCount();
+            cards.forEach((card, idx) => {
+                card.style.display = 'none';
+                card.classList.remove('visible-mobile');
+                card.onclick = null;
+            });
+            for (let i = 0; i < visibleCount; i++) {
+                const idx = (start + i) % cards.length;
+                cards[idx].style.display = 'flex';
+                if (visibleCount === 1) cards[idx].classList.add('visible-mobile');
+                cards[idx].onclick = () => {
+                    const imgSrc = serviceImages[idx] || serviceImages[0];
+                    document.getElementById('modalImg').src = imgSrc;
+                    modal.style.display = "flex";
+                };
+            }
+        }
+
+        const prevBtn = document.getElementById('carouselPrev');
+        const nextBtn = document.getElementById('carouselNext');
+        if (prevBtn && nextBtn) {
+            prevBtn.onclick = function() {
+                const visibleCount = getVisibleCount();
+                start = (start - 1 + cards.length) % cards.length;
+                renderCarousel();
+            };
+            nextBtn.onclick = function() {
+                const visibleCount = getVisibleCount();
+                start = (start + 1) % cards.length;
+                renderCarousel();
+            };
+        }
+
+        window.addEventListener('resize', renderCarousel);
+
+        renderCarousel();
+    }
 });

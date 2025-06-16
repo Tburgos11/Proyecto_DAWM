@@ -447,8 +447,8 @@ body {
 }
 
 .section-fade.visible {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 /* Services Carousel */
@@ -661,8 +661,6 @@ body {
         align-items: center;
     }
 }
-
-/* ...existing code... */
 
 /* =================== RESPONSIVE DESIGN MEJORADO =================== */
 
@@ -1038,4 +1036,35 @@ img, .services .container > img, .testimonials .container > img {
 html, body {
     max-width: 100vw;
     overflow-x: hidden;
+}
+
+/* Asegura que el contenido no quede debajo del header fijo */
+.hero,
+.services,
+.testimonials,
+.contact {
+    padding-top: 110px;
+}
+
+/* Ajuste de z-index para que el fondo no tape el contenido */
+.hero-bg {
+    z-index: 0;
+}
+
+/* En móvil, fondo blanco para el contenido del hero para asegurar contraste */
+@media (max-width: 900px) {
+    .hero-content {
+        background: rgba(255,255,255,0.85);
+        border-radius: 12px;
+        padding: 1rem 0.5rem;
+        margin: 0 4px;
+    }
+    .hero {
+        padding-top: 90px;
+    }
+    .services,
+    .testimonials,
+    .contact {
+        padding-top: 90px;
+    }
 }

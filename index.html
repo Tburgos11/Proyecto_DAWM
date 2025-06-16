@@ -8,7 +8,7 @@
     <meta name="description" content="Empresa especializada en impresión digital, diseño gráfico y publicidad. Gigantografías, vinil, banners, flyers, logotipos y más.">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body style="min-height:100vh;">
     <!-- ================= HEADER ================= -->
     <header class="header">
         <!-- Navegación principal -->
@@ -38,7 +38,7 @@
     </header>
 
     <!-- =============== HERO SECTION ============== -->
-    <section id="inicio" class="hero section-fade">
+    <section id="inicio" class="hero section-fade visible">
         <!-- Imagen de fondo y presentación principal -->
         <div class="hero-bg"></div>
         <div class="container hero-content">
@@ -66,7 +66,7 @@
     </section>
 
     <!-- ============== SERVICES SECTION =========== -->
-    <section id="servicios" class="services section-fade">
+    <section id="servicios" class="services section-fade visible">
         <div class="container">
             <!-- Imagen ilustrativa y título de servicios -->
             <img 
@@ -121,7 +121,7 @@
     </section>
 
     <!-- ============ TESTIMONIALS SECTION ========== -->
-    <section id="testimonios" class="testimonials section-fade">
+    <section id="testimonios" class="testimonials section-fade visible">
         <div class="container">
             <!-- Imagen, título y testimonios dinámicos -->
             <img 
@@ -140,7 +140,7 @@
     </section>
 
     <!-- ============== CONTACT SECTION ============= -->
-    <section id="contacto" class="contact section-fade">
+    <section id="contacto" class="contact section-fade visible">
         <div class="container">
             <!-- Título y descripción de contacto -->
             <div class="section-title" style="margin-bottom:2.5rem;">
@@ -270,48 +270,6 @@
     </footer>
 
     <!-- Script principal de la aplicación -->
-    <script type="module" src="main.js"></script>
-    <script>
-    // filepath: /workspaces/Proyecto_DAWM/index.html (menu hamburguesa)
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggle = document.getElementById('menu-toggle');
-        const navMobile = document.getElementById('nav-mobile');
-        const navLinks = document.querySelector('.nav-links');
-        function closeMenu() {
-            navMobile.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-        function openMenu() {
-            navMobile.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-        if (toggle && navMobile) {
-            toggle.addEventListener('click', function() {
-                if (navMobile.style.display === 'block') {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
-            });
-            // Cierra el menú al hacer clic en un enlace
-            navMobile.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-        }
-        // Mostrar/ocultar botón y menú según tamaño
-        function handleMenuDisplay() {
-            if (window.innerWidth <= 900) {
-                toggle.style.display = 'block';
-                navLinks.style.display = 'none';
-            } else {
-                toggle.style.display = 'none';
-                navLinks.style.display = 'flex';
-                navMobile.style.display = 'none';
-            }
-        }
-        window.addEventListener('resize', handleMenuDisplay);
-        handleMenuDisplay();
-    });
-    </script>
+    <script type="module" src="main.js"></script>   
 </body>
 </html>
