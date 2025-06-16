@@ -206,20 +206,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function renderCarousel() {
             const visibleCount = getVisibleCount();
-            cards.forEach((card, idx) => {
+            // Oculta todas las tarjetas
+            cards.forEach(card => {
                 card.style.display = 'none';
                 card.classList.remove('visible-mobile');
                 card.onclick = null;
             });
+            // Muestra solo las visibles y asigna el evento correcto
             for (let i = 0; i < visibleCount; i++) {
                 const idx = (start + i) % cards.length;
                 cards[idx].style.display = 'flex';
                 if (visibleCount === 1) cards[idx].classList.add('visible-mobile');
-                cards[idx].onclick = () => {
-                    const imgSrc = serviceImages[idx] || serviceImages[0];
-                    document.getElementById('modalImg').src = imgSrc;
-                    modal.style.display = "flex";
-                };
+                // Usa el índice real para la imagen
+                cards[idx].onclick = (() => {
+                    const realIdx = idx;
+                    return () => {
+                        const imgSrc = serviceImages[realIdx] || serviceImages[0];
+                        document.getElementById('modalImg').src = imgSrc;
+                        modal.style.display = "flex";
+                    };
+                })();
             }
         }
 
@@ -227,19 +233,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextBtn = document.getElementById('carouselNext');
         if (prevBtn && nextBtn) {
             prevBtn.onclick = function() {
-                const visibleCount = getVisibleCount();
                 start = (start - 1 + cards.length) % cards.length;
                 renderCarousel();
             };
             nextBtn.onclick = function() {
-                const visibleCount = getVisibleCount();
                 start = (start + 1) % cards.length;
                 renderCarousel();
             };
+        } else {
+            console.warn('No se encontraron los botones del carrusel');
         }
 
         window.addEventListener('resize', renderCarousel);
 
         renderCarousel();
+        console.log('Carrusel inicializado correctamente');
+    } else {
+        console.warn('No se encontró el carrusel de servicios');
     }
 });
